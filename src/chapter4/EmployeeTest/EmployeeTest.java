@@ -7,12 +7,20 @@ public class EmployeeTest {
         staff[1] = new Employee("Harry Hacker", 50000, 1989, 10, 1);
         staff[2] = new Employee("Tony Tester", 40000, 1990, 3, 15);
 
+        // Тестирование конструктора без аргуметов
+        Employee[] defaultStaff = {new Employee(), new Employee()};
+
         for (Employee e : staff) {
             e.raiseSalary(5);
         }
 
         for (Employee e : staff) {
             System.out.println("id=" + e.getId() + ",name=" + e.getName() + ",salary=" + e.getSalary() + ",hireDay=" + e.getHireDay());
+        }
+
+        System.out.println("\nТестирование коеструктора без аргументов");
+        for (Employee employee : defaultStaff) {
+            System.out.println("id=" + employee.getId() + ",name=" + employee.getName() + ",salary=" + employee.getSalary() + ",hireDay=" + employee.getHireDay());
         }
     }
 }

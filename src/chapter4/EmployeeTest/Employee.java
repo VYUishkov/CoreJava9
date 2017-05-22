@@ -12,6 +12,16 @@ public class Employee {
 
     private int id;
 
+    public Employee() {
+        name = "";
+        salary = 0;
+
+        GregorianCalendar calendar = new GregorianCalendar();
+        hireDay = calendar.getTime();
+
+        setId();
+    }
+
     public Employee(String name, double salary, int year, int month, int day) {
         this.name = name;
         this.salary = salary;
