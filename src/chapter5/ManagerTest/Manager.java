@@ -21,4 +21,9 @@ public class Manager extends Employee {
     public double getSalary() {
         return super.getSalary() + bonus;
     }
+
+    @Override
+    public String getDescription() {
+        return String.format("a manager with a salary of $%.2f", getSalary());
+    }
 }

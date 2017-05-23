@@ -1,14 +1,15 @@
 package chapter4.EmployeeTest;
 
+import chapter5.PersonTest.Person;
+
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.Random;
 
-public class Employee {
+public class Employee  extends Person{
     private static int nextId;
 
     private int id;
-    private String name = "";
     private double salary;
     private Date hireDay;
 
@@ -34,20 +35,16 @@ public class Employee {
 
     public Employee(String name, double salary)
     {
-        this.name = name;
+        super(name);
         this.salary = salary;
     }
 
     public Employee(String name, double salary, int year, int month, int day) {
-        this.name = name;
+        super(name);
         this.salary = salary;
 
         GregorianCalendar calendar = new GregorianCalendar(year, month, day);
         hireDay = calendar.getTime();
-    }
-
-    public String getName() {
-        return name;
     }
 
     public double getSalary() {
@@ -68,5 +65,10 @@ public class Employee {
      */
     public void raiseSalary(int percent) {
         salary += salary * percent / 100;
+    }
+
+    @Override
+    public String getDescription() {
+        return String.format("an employess with a salary of $%.2f", salary);
     }
 }
