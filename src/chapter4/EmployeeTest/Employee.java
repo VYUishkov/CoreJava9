@@ -2,24 +2,40 @@ package chapter4.EmployeeTest;
 
 import java.util.Date;
 import java.util.GregorianCalendar;
+import java.util.Random;
 
 public class Employee {
-    private static int nextId = 1;
+    private static int nextId;
 
-    private String name;
+    private int id;
+    private String name = "";
     private double salary;
     private Date hireDay;
 
-    private int id;
+    static {
+        Random generator = new Random();
+        nextId = generator.nextInt(10000);
+    }
 
-    public Employee() {
-        name = "";
-        salary = 0;
+    {
+        id  = nextId;
+        nextId++;
 
         GregorianCalendar calendar = new GregorianCalendar();
         hireDay = calendar.getTime();
+    }
 
-        setId();
+    public Employee() {}
+
+    public Employee(double salary)
+    {
+        this("Employee #" + nextId, salary);
+    }
+
+    public Employee(String name, double salary)
+    {
+        this.name = name;
+        this.salary = salary;
     }
 
     public Employee(String name, double salary, int year, int month, int day) {
@@ -28,8 +44,6 @@ public class Employee {
 
         GregorianCalendar calendar = new GregorianCalendar(year, month, day);
         hireDay = calendar.getTime();
-
-        setId();
     }
 
     public String getName() {
@@ -46,11 +60,6 @@ public class Employee {
 
     public int getId() {
         return id;
-    }
-
-    private void setId() {
-        id = nextId;
-        nextId++;
     }
 
     /**
