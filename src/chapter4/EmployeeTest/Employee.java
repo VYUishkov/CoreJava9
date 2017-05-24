@@ -4,6 +4,7 @@ import chapter5.PersonTest.Person;
 
 import java.util.Date;
 import java.util.GregorianCalendar;
+import java.util.Objects;
 import java.util.Random;
 
 public class Employee  extends Person{
@@ -70,5 +71,23 @@ public class Employee  extends Person{
     @Override
     public String getDescription() {
         return String.format("an employess with a salary of $%.2f", salary);
+    }
+
+    @Override
+    public boolean equals(Object otherObject) {
+        if (!super.equals(otherObject)) return false;
+
+        Employee employee = (Employee) otherObject;
+        return salary == employee.salary && Objects.equals(hireDay, employee.hireDay);
+    }
+
+    @Override
+    public int hashCode() {
+        return super.hashCode() + Objects.hash(salary, hireDay);
+    }
+
+    @Override
+    public String toString() {
+        return super.toString() + ",salary=" + salary + ",hireDay" + hireDay;
     }
 }
