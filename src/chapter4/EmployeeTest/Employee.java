@@ -7,7 +7,7 @@ import java.util.GregorianCalendar;
 import java.util.Objects;
 import java.util.Random;
 
-public class Employee extends Person implements Comparable<Employee>{
+public class Employee extends Person implements Comparable<Employee>, Cloneable{
     private static int nextId;
 
     private int id;
@@ -101,5 +101,14 @@ public class Employee extends Person implements Comparable<Employee>{
     public int compareTo(Employee o)
     {
         return Double.compare(salary, o.salary);
+    }
+
+    @Override
+    public Employee clone() throws CloneNotSupportedException
+    {
+        Employee cloned = (Employee) super.clone();
+        cloned.hireDay = (Date) hireDay.clone();
+
+        return cloned;
     }
 }
