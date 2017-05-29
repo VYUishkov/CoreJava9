@@ -7,7 +7,7 @@ import java.util.GregorianCalendar;
 import java.util.Objects;
 import java.util.Random;
 
-public class Employee  extends Person{
+public class Employee extends Person implements Comparable<Employee>{
     private static int nextId;
 
     private int id;
@@ -89,5 +89,17 @@ public class Employee  extends Person{
     @Override
     public String toString() {
         return super.toString() + ",id=" + id +",salary=" + salary + ",hireDay" + hireDay;
+    }
+
+    @Override
+    /**
+     * Сравнение сотрудников по зарплате
+     * @return возвращает отрицательное знчение, если зарплата
+     *      данного сотрудника ниже, чем у другого; нулевое значение, если
+     *      зарпалата одинакова; а иначе - положительное числовое значение
+     */
+    public int compareTo(Employee o)
+    {
+        return Double.compare(salary, o.salary);
     }
 }
