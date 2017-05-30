@@ -22,22 +22,22 @@ public class TalkingClock
 
     public void start()
     {
+        class TimePrinter implements ActionListener
+        {
+            @Override
+            public void actionPerformed(ActionEvent e)
+            {
+                Date now = new Date();
+                System.out.println("At the tone, the time is " + now);
+                if (beep)
+                {
+                    Toolkit.getDefaultToolkit().beep();
+                }
+            }
+        }
+
         ActionListener listener = new TimePrinter();
         Timer t = new Timer(interval, listener);
         t.start();
-    }
-
-    public class TimePrinter implements ActionListener
-    {
-        @Override
-        public void actionPerformed(ActionEvent e)
-        {
-            Date now = new Date();
-            System.out.println("At the tone, the time is " + now);
-            if (beep)
-            {
-                Toolkit.getDefaultToolkit().beep();
-            }
-        }
     }
 }
