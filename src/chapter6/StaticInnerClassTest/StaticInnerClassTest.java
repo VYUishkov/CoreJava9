@@ -1,0 +1,19 @@
+package chapter6.StaticInnerClassTest;
+
+/**
+ * Created by VICTOR on 06.06.2017.
+ */
+public class StaticInnerClassTest
+{
+    public static void main(String[] args)
+    {
+        double[] d = new double[20];
+        for (int i = 0; i < d.length; i++)
+        {
+            d[i] = 100 * Math.random();
+        }
+        ArrayAlg.Pair p = ArrayAlg.minmax(d);
+        System.out.println("min= " + p.getMin());
+        System.out.println("max= " + p.getMax());
+    }
+}
